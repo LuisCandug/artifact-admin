@@ -1,38 +1,238 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* UPLOAD */
+.upload {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  background: #eef1f5;
+}
+
+/* HEADER */
+.header {
+  height: 40px;
+  background: #7f9db8;
+  color: white;
+  padding: 10px;
+}
+
+/* TOOLBAR */
+.toolbar {
+  height: 45px;
+  background: white;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.publish {
+  background: black;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.pro {
+  background: gold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* WORKSPACE */
+.workspace {
+  display: flex;
+  height: calc(100vh - 85px);
+}
+
+/* ICON SIDEBAR */
+.icon-sidebar {
+  width: 50px;
+  background: #2f3b45;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.icon-sidebar div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.icon-sidebar .active {
+  background: #4f6b82;
+  width: 100%;
+  text-align: center;
+}
+
+/* CREATE PANEL */
+.create-panel {
+  padding: 10px;
+}
+
+.layer-item {
+  display: block;          /* STACK VERTICALLY */
+  padding: 8px 6px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.layer-item:first-of-type {
+  font-weight: bold;
+}
+
+.layer-item:last-of-type {
+  padding-left: 18px;
+  opacity: 0.9;
+}
+
+
+.layer-item:hover {
+  background: #eaeaea;
+}
+
+
+/* CANVAS */
+.canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+/* ===== DRAFTS VIEW ===== */
+.drafts-canvas {
+  color: white;
+  padding: 10px;
+  height: 100%;
+}
+
+/* GRID = NAVIGATION BLACK SQUARE */
+.drafts-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  gap: 8px;
+  height: calc(100% - 40px);
+}
+
+/* EACH CELL */
+/* EACH GRID CELL */
+.draft-cell {
+  background: #000;
+  border: 1px solid #222;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+/* PREVIEW WRAPPER */
+.draft-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 2D IMAGE */
+.draft-trigger {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/* 🔥 CRITICAL FIX */
+.draft-model {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 2;
+}
+
+
+.trigger {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/* 3D ALWAYS ON TOP */
+.model-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 999;
+}
+
+
+
+
+
+/* CANVAS BOTTOM */
+.canvas-bottom {
+  margin-top: 10px;
+  background: white;
+  padding: 6px;
+  display: flex;
+  gap: 10px;
+  border-radius: 4px;
+}
+
+.mode-btn {
+  padding: 5px 15px;
+  border: 1px solid #ccc;
+  background: #eee;
+  cursor: pointer;
+}
+
+.mode-btn:hover {
+  background: #ddd;
+}
+
+
+/* DRAFT THUMBNAILS */
+.drafts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 5rem);
+  gap: 10px;
+}
+
+.draft-card {
+  position: relative;
+  width: 5rem;
+  height: 5rem;
+  background: #000;
+  border: 1px solid #333;
+  overflow: hidden;
+}
+
+/* 2D BACKGROUND */
+.draft-2d {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/* 3D OVERLAY */
+.draft-3d {
+  position: absolute !important;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
 }
